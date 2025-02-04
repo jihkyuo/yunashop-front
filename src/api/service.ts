@@ -2,6 +2,7 @@ import { client } from '@/api/client';
 import type { CreateItemRequestDto, ItemDto } from '@/api/types/item.dto';
 import type { JoinMemberRequestDto, MemberDto } from '@/api/types/member.dto';
 import type { CreateOrderRequestDto, OrderDto, OrderSearchDto } from '@/api/types/orders.dto';
+import type { ResultDto } from '@/api/types/result.dto';
 
 export const getHello = async () => {
   return await client.get('/hello');
@@ -12,7 +13,7 @@ export const joinMemberApi = async (body: JoinMemberRequestDto) => {
 };
 
 export const getMembers = async () => {
-  return (await client.get<MemberDto[]>('/members')).data;
+  return (await client.get<ResultDto<MemberDto[]>>('/members')).data;
 };
 
 export const createItemApi = async (body: CreateItemRequestDto) => {

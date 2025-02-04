@@ -3,7 +3,10 @@ import { Table } from '@/shared/table/Table';
 import { useQuery } from '@tanstack/react-query';
 
 export const MembersTable = () => {
-  const { data = [] } = useQuery(memberQueryKeys.list);
+  const { data = [] } = useQuery({
+    ...memberQueryKeys.list,
+    select: result => result.data,
+  });
 
   return (
     <div>
